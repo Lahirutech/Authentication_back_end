@@ -59,7 +59,7 @@ const login = async (req, res, next) => {
     path: "/",
     expires: new Date(Date.now() + 1000 * 30), // 30 seconds
     httpOnly: true,
-    SameSite:None,
+    SameSite:lax,
     Secure:true
   });
 
@@ -126,7 +126,7 @@ const refreshToken = (req, res, next) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 30), // 30 seconds
       httpOnly: true,
-      SameSite:None,
+      SameSite:lax,
       Secure:true
     });
 
