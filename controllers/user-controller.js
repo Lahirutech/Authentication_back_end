@@ -59,7 +59,8 @@ const login = async (req, res, next) => {
     path: "/",
     expires: new Date(Date.now() + 1000 * 30), // 30 seconds
     httpOnly: true,
-    sameSite: "lax",
+    SameSite:None,
+    Secure:true
   });
 
   return res
@@ -125,7 +126,8 @@ const refreshToken = (req, res, next) => {
       path: "/",
       expires: new Date(Date.now() + 1000 * 30), // 30 seconds
       httpOnly: true,
-      sameSite: "lax",
+      SameSite:None,
+      Secure:true
     });
 
     req.id = user.id;
