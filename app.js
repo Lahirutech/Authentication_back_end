@@ -5,7 +5,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
-app.use(cors({ credentials: true, origin: "*" ,optionSuccessStatus:200}));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" ,optionSuccessStatus:200}));
 app.use(cookieParser());
 app.use(express.json());
 app.use("/api", router);
