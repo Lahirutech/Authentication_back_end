@@ -8,7 +8,7 @@ const app = express();
 
 // app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
-const allowOrigins = ['http://localhost:3000', /** other domains if any */ ]
+const allowOrigins = ['http://localhost:3000','https://62aa1f25e3e65a612b257a02--extraordinary-mermaid-710456.netlify.app' /** other domains if any */ ]
 const corsOptions = {
   credentials: true,
   origin: function(origin, callback) {
@@ -22,10 +22,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(function (req, res, next) {   
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');    
-    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
+    res.setHeader('Access-Control-Allow-Origin', ['http://localhost:3000','https://62aa1f25e3e65a612b257a02--extraordinary-mermaid-710456.netlify.app']);    
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
      res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');   
-    // res.setHeader('Access-Control-Allow-Credentials', true);    
+    res.setHeader('Access-Control-Allow-Credentials', true);    
     next();
 });
 
