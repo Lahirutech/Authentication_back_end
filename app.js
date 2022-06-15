@@ -5,16 +5,23 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
 const app = express();
-app.use(cors())
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
-app.use(function (req, res, next) {   
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');    
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');   
-    res.setHeader('Access-Control-Allow-Credentials', true);    
-    next();
-});
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+
+const allowOrigins = ['http://localhost:3000', /** other domains if any */ ]
+const corsOptions = {
+  credentials: true,
+  origin: function(origin, callback) {
+    if (allowOrigins.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions));
+
 
 app.use(cookieParser());
 app.use(express.json());
