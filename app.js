@@ -34,10 +34,10 @@ app.use(cors({
     credentials: true
 }));
 
-app.use(function (req, res, next) {   
-    res.setHeader('Access-Control-Allow-Origin', ['http://localhost:3000','https://62aa1f25e3e65a612b257a02--extraordinary-mermaid-710456.netlify.app']);        
-    next();
-});
+// app.use(function (req, res, next) {   
+//     res.setHeader('Access-Control-Allow-Origin', ['http://localhost:3000','https://62aa1f25e3e65a612b257a02--extraordinary-mermaid-710456.netlify.app']);        
+//     next();
+// });
 
 app.use(cookieParser());
 app.use(express.json());
