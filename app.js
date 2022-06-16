@@ -30,7 +30,7 @@ const app = express();
 // });
 
 app.use(cors({
-    origin: 'https://62aa1f25e3e65a612b257a02--extraordinary-mermaid-710456.netlify.app',
+    origin: ['https://master--extraordinary-mermaid-710456.netlify.app','*'],
     credentials: true
 }));
 
