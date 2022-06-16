@@ -30,7 +30,7 @@ const app = express();
 // });
 //adding cors
 app.use(cors({
-    origin: 'https://62ab68265968250b5367f490--dynamic-mousse-172f8b.netlify.app',
+    origin: 'https://master--dynamic-mousse-172f8b.netlify.app',
     credentials: true
 })); 
 
