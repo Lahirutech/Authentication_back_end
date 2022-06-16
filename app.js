@@ -30,7 +30,7 @@ const app = express();
 // });
 
 app.use(cors({
-    origin: ['https://master--extraordinary-mermaid-710456.netlify.app','*'],
+    origin: ['https://master--extraordinary-mermaid-710456.netlify.app','http://localhost:3000/'],
     credentials: true
 }));
 
