@@ -28,11 +28,11 @@ const app = express();
 //     res.setHeader('Access-Control-Allow-Credentials', true);    
 //     next();
 // });
-
+//adding cors
 app.use(cors({
     origin: ['https://master--extraordinary-mermaid-710456.netlify.app','http://localhost:3000/'],
     credentials: true
-}));
+})); 
 
 app.use(cookieParser());
 app.use(express.json());
