@@ -111,6 +111,7 @@ const refreshToken = (req, res, next) => {
   }
   jwt.verify(String(prevToken), process.env.JWT_SECRET_KEY, (err, user) => {
     if (err) {
+      console.log("prevToken", prevToken);
       console.log(err);
       return res.status(403).json({ message: "Authentication failed" });
     }
