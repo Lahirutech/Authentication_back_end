@@ -124,7 +124,7 @@ const refreshToken = (req, res, next) => {
 
     res.cookie(String(user.id), token, {
       path: "/",
-      expires: new Date(Date.now() + 1000 * 30), // 30 seconds
+      expires: new Date(Date.now() + 1000 * 3600), // 30 seconds
       httpOnly: true,
       sameSite: "lax",
     });
