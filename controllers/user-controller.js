@@ -115,23 +115,25 @@ const refreshToken = (req, res, next) => {
       console.log("prevToken", prevToken);
       console.log(err);
       return res.status(403).json({ message: "Authentication failed" });
+    } else {
+      res.clearCookie(`${user.id}`);
+      req.cookies[`${user.id}`] = "";
+
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, {
+        expiresIn: "7d",
+      });
+      console.log("Regenerated Token\n", token);
+
+      res.cookie(String(user.id), token, {
+        path: "/",
+        expires: new Date(Date.now() + 1000 * 3600), // 30 seconds
+        httpOnly: true,
+        sameSite: "lax",
+      });
+
+      req.id = user.id;
     }
-    res.clearCookie(`${user.id}`);
-    req.cookies[`${user.id}`] = "";
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "7d",
-    });
-    console.log("Regenerated Token\n", token);
-
-    res.cookie(String(user.id), token, {
-      path: "/",
-      expires: new Date(Date.now() + 1000 * 3600), // 30 seconds
-      httpOnly: true,
-      sameSite: "lax",
-    });
-
-    req.id = user.id;
     next();
   });
 };
