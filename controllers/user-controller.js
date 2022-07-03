@@ -105,6 +105,7 @@ const getUser = async (req, res, next) => {
 
 const refreshToken = (req, res, next) => {
   const cookies = req.headers.cookie;
+  console.log("req.headers.cookie", req.headers.cookie);
   const prevToken = cookies.split("=")[1];
   if (!prevToken) {
     return res.status(400).json({ message: "Couldn't find token" });
