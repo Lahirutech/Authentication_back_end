@@ -59,8 +59,8 @@ const login = async (req, res, next) => {
     path: "/",
     expires: new Date(Date.now() + 1000 * 3600), // 30 seconds
     httpOnly: true,
-    samesite:"None",
-    Secure:true
+    samesite: "None",
+    Secure: true,
   });
 
   return res
@@ -71,9 +71,8 @@ const login = async (req, res, next) => {
 const verifyToken = (req, res, next) => {
   const cookies = req.headers.cookie;
   if (!cookies) {
-   return res.status(400).json({ message: "No cookie found logging out" });
-    
-  } else { 
+    return res.status(400).json({ message: "No cookie found logging out" });
+  } else {
     const token = cookies.split("=")[1];
     if (!token) {
       res.status(404).json({ message: "No token found" });
@@ -103,6 +102,7 @@ const getUser = async (req, res, next) => {
   }
   return res.status(200).json({ user });
 };
+
 const refreshToken = (req, res, next) => {
   const cookies = req.headers.cookie;
   const prevToken = cookies.split("=")[1];
@@ -124,10 +124,9 @@ const refreshToken = (req, res, next) => {
 
     res.cookie(String(user.id), token, {
       path: "/",
-      expires: new Date(Date.now() + 1000 * 3600), // 3600 seconds
+      expires: new Date(Date.now() + 1000 * 30), // 30 seconds
       httpOnly: true,
-      SameSite:"None",
-      Secure:true
+      sameSite: "lax",
     });
 
     req.id = user.id;
