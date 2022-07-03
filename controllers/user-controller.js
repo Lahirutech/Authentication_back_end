@@ -119,7 +119,7 @@ const refreshToken = (req, res, next) => {
     req.cookies[`${user.id}`] = "";
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET_KEY, {
-      expiresIn: "35s",
+      expiresIn: "7d",
     });
     console.log("Regenerated Token\n", token);
 
