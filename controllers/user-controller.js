@@ -46,7 +46,7 @@ const login = async (req, res, next) => {
     return res.status(400).json({ message: "Inavlid Email / Password" });
   }
   const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: "35s",
+    expiresIn: "7d",
   });
 
   console.log("Generated Token\n", token);
